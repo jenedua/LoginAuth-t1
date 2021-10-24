@@ -1,0 +1,33 @@
+{
+    "name": "jenedua/authphp",
+    "description": "uma simples peça de login para a seu quebra-cabeças,código-aberto :)",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fedner Dabady",
+            "email": "fednerdab@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source"
+        },
+        "files": [
+            "source/Config.php",
+            "source/Helpers.php"
+        ]
+    },
+    "require": {
+        "ext-json":"*",
+        "coffeecode/router":"1.0.8",
+        "coffeecode/datalayer":"1.1.8",
+        "coffeecode/optimizer":"2.0.2",
+        "phpmailer/phpmailer":"6.0.7",
+        "league/oauth2-facebook":"2.0.5",
+        "league/oauth2-google":"3.0.2",
+        "matthiasmullie/minify":"1.3.61"
+    }
+
+}
