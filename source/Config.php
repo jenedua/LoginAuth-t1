@@ -6,7 +6,7 @@
 define("SITE", [
     "name" => " Auth em MVV com PHP",
     "desc" => "Apprender a construir uma applicação de autenticação em MVC com php",
-    "domain" => "dlocalauth.com",
+    "domain" => "localauth.com",
     "local" => "pt_BR",
     "root" =>"http://localhost/LoginAuth/t1"
 ]);

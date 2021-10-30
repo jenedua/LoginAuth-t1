@@ -11,6 +11,14 @@ class ComposerStaticInitf377115ebdec6fd98a306d529d2c0efa
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'e471bf351add62873bc0289ccd6a937f' => __DIR__ . '/..' . '/league/plates/src/Template/match.php',
+        '152c98af9456eeb8f53697d6a7dfd689' => __DIR__ . '/..' . '/league/plates/src/Extension/Data/data.php',
+        'e20239a76b73b9912f51f0005956d1db' => __DIR__ . '/..' . '/league/plates/src/Extension/Path/path.php',
+        'd513f8e004e152493580ca1917e308ba' => __DIR__ . '/..' . '/league/plates/src/Extension/RenderContext/func.php',
+        '27980683f1626a3fd1405d27b171c0fe' => __DIR__ . '/..' . '/league/plates/src/Extension/RenderContext/render-context.php',
+        'bdc465a053da7f7ddb072631f6d41d45' => __DIR__ . '/..' . '/league/plates/src/Extension/LayoutSections/layout-sections.php',
+        'afa76803f24616d7599be3b7b0846adc' => __DIR__ . '/..' . '/league/plates/src/Extension/Folders/folders.php',
+        '16c5be35e32c6cf916d875518b909210' => __DIR__ . '/..' . '/league/plates/src/Util/util.php',
         '8569209ef93ae8cf2ce848fc2c4efad5' => __DIR__ . '/../..' . '/source/Config.php',
         '0dc9cbdd816ea2ac751402cd3b3cddab' => __DIR__ . '/../..' . '/source/Helpers.php',
     );
@@ -33,6 +41,7 @@ class ComposerStaticInitf377115ebdec6fd98a306d529d2c0efa
         ),
         'L' => 
         array (
+            'League\\Plates\\' => 14,
             'League\\OAuth2\\Client\\' => 21,
         ),
         'G' => 
@@ -75,11 +84,15 @@ class ComposerStaticInitf377115ebdec6fd98a306d529d2c0efa
         array (
             0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
         ),
+        'League\\Plates\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/plates/src',
+        ),
         'League\\OAuth2\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth2-client/src',
-            1 => __DIR__ . '/..' . '/league/oauth2-facebook/src',
-            2 => __DIR__ . '/..' . '/league/oauth2-google/src',
+            1 => __DIR__ . '/..' . '/league/oauth2-google/src',
+            2 => __DIR__ . '/..' . '/league/oauth2-facebook/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

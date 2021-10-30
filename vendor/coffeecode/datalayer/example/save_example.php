@@ -29,7 +29,7 @@ print "update user";
 
 $name = ["Robson", "Kaue", "Gustavo", "João"];
 
-$user = (new User())->findById($user->id);
+$user = (new User())->findById(10000);
 
 if ($user) {
     $user->first_name = $name[rand(0, 3)];
@@ -45,8 +45,7 @@ if ($user) {
 print "addr model";
 
 $addr = new Address;
-$addr->user_id = $user->id;
-$addr->address = "Rua do {$user->first_name}, Nº " . rand(1, 1000);
+$addr->address = "Rua Nome Da Rua 001";
 $address = $addr->save();
 
 if (!$address) {

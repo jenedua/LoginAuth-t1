@@ -9,6 +9,11 @@
      return SITE("root");
  }
 
+  function routeImage(string $imageUrl): string
+  {
+
+    return "https://via.placeholder.com/1200x628/0984e3/FFFFFF?text={$imageUrl}";
+  }
  function asset(string $path): string
  {
       return SITE["root"]."/views/assets/{$path}";

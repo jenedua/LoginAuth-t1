@@ -32,7 +32,7 @@ CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas 
 Data Layer is available via Composer:
 
 ```bash
-"coffeecode/datalayer": "1.1.*"
+"coffeecode/datalayer": "^1.0"
 ```
 
 or run
@@ -49,7 +49,7 @@ Para mais detalhes sobre como usar o Data Layer, veja a pasta de exemplo com det
 
 #### connection
 
-###### To begin using the Data Layer, you need to connect to the database (MariaDB / MySql). For more connections [PDO connections manual on PHP.net](https://www.php.net/manual/pt_BR/pdo.drivers.php)
+######To begin using the Data Layer, you need to connect to the database (MariaDB / MySql). For more connections [PDO connections manual on PHP.net](https://www.php.net/manual/pt_BR/pdo.drivers.php)
 
 Para começar a usar o Data Layer precisamos de uma conexão com o seu banco de dados. Para ver as conexões possíveis acesse o [manual de conexões do PDO em PHP.net](https://www.php.net/manual/pt_BR/pdo.drivers.php)
 
@@ -72,7 +72,7 @@ define("DATA_LAYER_CONFIG", [
 
 #### your model
 
-###### The Data Layer is based on an MVC structure with the Layer Super Type and Active Record design patterns. Soon to consume it is necessary to create the model of your table and inherit the Data Layer.
+######The Data Layer is based on an MVC structure with the Layer Super Type and Active Record design patterns. Soon to consume it is necessary to create the model of your table and inherit the Data Layer.
 
 O Data Layer é baseado em uma estrutura MVC com os padrões de projeto Layer Super Type e Active Record. Logo para consumir é necessário criar o modelo de sua tabela e herdar o Data Layer.
 
@@ -117,10 +117,6 @@ foreach ($users as $user) {
 //find one user by condition
 $user = $model->find("first_name = :name", "name=Robson")->fetch();
 echo $user->first_name;
-
-//find one user by two conditions
-$user = $model->find("first_name = :name AND last_name = :last", "name=Robson&last=Leite")->fetch();
-echo $user->first_name . " " . $user->first_last;
 ```
 
 #### findById
@@ -132,28 +128,6 @@ use Example\Models\User;
 $model = new User();
 $user = $model->findById(2);
 echo $user->first_name;
-```
-
-#### secure params
-###### See example find_example.php and model classes
-Consulte exemplo find_example.php e classes modelo
-
-```php
-$params = http_build_query(["name" => "UpInside & Associated"]);
-$company = (new Company())->find("name = :name", $params);
-var_dump($company, $company->fetch());
-```
-
-#### join method
-###### See example find_example.php and model classes
-Consulte exemplo find_example.php e classes modelo
-
-```php
-$addresses = new Address();
-$address = $addresses->findById(22);
-//get user data to this->user->[all data]
-$address->user();
-var_dump($address);
 ```
 
 #### count
@@ -210,27 +184,6 @@ if($user->fail()){
     echo $user->fail()->getMessage();
 }
 ```
-
-#### custom data method
-
-````php
-class User{
-    //...
-
-    public function fullName(): string 
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
-    
-    public function document(): string
-    {
-        return "Restrict";
-    }
-}
-
-echo $this->full_name; //Robson V. Leite
-echo $this->document; //Restrict
-```` 
 
 ## Contributing
 

@@ -117,8 +117,6 @@ class Optimizer extends MetaTags
     }
 
     /**
-     * Você deve usar UM ou OUTRO, se for usar $appid deixe o $admins em null.
-     * Mas se for usar $admins, então deixe o $appid em null.
      * @param string|null $appId
      * @param array|null $admins
      * @return Optimizer
@@ -129,16 +127,15 @@ class Optimizer extends MetaTags
             $fb = $this->meta->addChild("meta");
             $fb->addAttribute("property", "fb:app_id");
             $fb->addAttribute("content", $appId);
+
             return $this;
         }
 
-        if (!empty($admins) && is_array($admins)) {
-            foreach ($admins as $admin) {
-                $fb = $this->meta->addChild("meta");
-                $fb->addAttribute("property", "fb:admins");
-                $fb->addAttribute("content", $admin);
-            }
-        }
+        //foreach ($admins as $admin) {
+        //    $fb = $this->meta->addChild("meta");
+        //    $fb->addAttribute("property", "fb:admins");
+        //    $fb->addAttribute("content", $admin);
+       // }
 
         return $this;
     }
