@@ -14,9 +14,16 @@
 
     return "https://via.placeholder.com/1200x628/0984e3/FFFFFF?text={$imageUrl}";
   }
- function asset(string $path): string
+ function asset(string $path, $time=true): string
  {
-      return SITE["root"]."/views/assets/{$path}";
+        $file = SITE["root"]."/views/assets/{$path}";
+        $fileOnDir = dirname(__DIR__, 1). "/views/assets/{$path}";
+
+        if($time && file_exists($fileOnDir)){
+            $file .= "?time=".filemtime($fileOnDir);
+
+        }
+      return  $file;
  }
 
  function flash(string $type=null, string $message = null) : ?string
@@ -25,7 +32,7 @@
      {
          $_SESSION["flash"] = [
              "type" => $type,
-             "messagem" => $message
+             "message" => $message
          ];
          return null;
      }

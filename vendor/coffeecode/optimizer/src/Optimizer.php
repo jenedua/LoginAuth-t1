@@ -130,12 +130,13 @@ class Optimizer extends MetaTags
 
             return $this;
         }
-
-        //foreach ($admins as $admin) {
-        //    $fb = $this->meta->addChild("meta");
-        //    $fb->addAttribute("property", "fb:admins");
-        //    $fb->addAttribute("content", $admin);
-       // }
+/*
+        foreach ($admins as $admin) {
+            $fb = $this->meta->addChild("meta");
+            $fb->addAttribute("property", "fb:admins");
+            $fb->addAttribute("content", $admin);
+        }
+ */
 
         return $this;
     }

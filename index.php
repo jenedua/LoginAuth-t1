@@ -11,6 +11,9 @@ use CoffeeCode\Router\Router;
 
 $router = new Router(site());
 $router->namespace("Source\Controllers");
+
+//var_dump(asset("css/form.css",false));
+//die;
 //var_dump(site("name"));
 /**
  * WEB
@@ -24,6 +27,11 @@ $router->get("/senha/{email}/{forget}", "Web:reset", "web.reset");
 /**
  * AUTH
  */
+$router->group(null);
+$router->post("/login", "Auth:login", "auth.login");
+$router->post("/register", "Auth:register" , "auth.register");
+$router->post("/forget", "Auth:forget" , "auth.forget");
+$router->post("/reset", "Auth:reset" , "auth.reset");
 
 
  /**
@@ -33,6 +41,10 @@ $router->get("/senha/{email}/{forget}", "Web:reset", "web.reset");
   /**
    * PROFILE
    */
+  $router->group("/me");
+  $router->get("/", "App:home", "app.home");
+  $router->get("/sair", "App:logoff", "app.logoff");
+  
 
    /**
     * ERRORS
