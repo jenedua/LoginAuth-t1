@@ -3,6 +3,7 @@
   namespace Source\Controllers;
 
 use Source\Models\User;
+use Source\Support\Email;
 
 class auth extends Controller
   {
@@ -97,6 +98,101 @@ class auth extends Controller
           ]);
       
       }
+
+      public function forget($data):void
+      {
+
+        $email = filter_var($data["email"], FILTER_VALIDATE_EMAIL);
+
+        if(!$email){
+            echo $this->ajaxResponse("message", [
+                "type" => "alert",
+                "message" => "Informe a seu email para recuperar a senha"
+            ]);
+            return;
+        }
+            $user = (new User())->find("email = :e", "e={$email}")->fetch();
+            if(!$user){
+                echo $this->ajaxResponse("message", [
+                    "type" => "alert",
+                    "message" => "O E-MAIL informado não é cadastrado"
+                ]);
+                return;
+            }
+
+            $user->forget = (md5(uniqid(rand(), true)));
+            $user->save();
+
+            $_SESSION["forget"] = $user->id;
+
+            $email = new Email();
+            $email->add(
+                "Recuper a sua senha | ".site("name"),
+                $this->view->render("emails/recover",[
+                    "user" => $user,
+                    "link" => $this->router->route("web.reset", [
+                        "email" => $user->email,
+                        "forget" => $user->forget
+                    ])
+                ]),
+                "{$user->first_name} {$user->last_name}",
+                $user->email
+            )->send();
+
+            flash("success", "Enviamos um link de recuperação para seu e-mail");
+
+            echo $this->ajaxResponse("redirect", [
+                "url" => $this->router->route("web.forget")
+            ]);        
+
+    }
+
+    public function reset($data): void
+    {
+        if(empty($_SESSION["forget"]) || !$user = (new User())->findById($_SESSION["forget"])){
+            flash("error", "Não foi possivel recuperar, tente novamente");
+             echo $this->ajaxResponse("redirect", [
+                "url"=> $this->router->route("web.forget")
+             ]);
+             return;
+
+        }
+
+        if(empty($data["password"]) || empty($data["password_re"])){
+            echo $this->ajaxResponse("message", [
+                "type" => "alert",
+                "message" => "Informe e repita sua nova senha"
+            ]);
+            return;
+        }
+
+        if($data["password"] != $data["password_re"]){
+            echo $this->ajaxResponse("message", [
+                "type" => "error",
+                "message" => "Senhas differentes"
+            ]);
+            return;
+        }
+
+        $user->passwd = $data["password"];
+        $user->forget = null;
+
+        if(!$user->save()){
+            echo $this->ajaxResponse("message", [
+                "type" => "error",
+                "message" => $user->fail()->getMessage()
+            ]);
+            return; 
+        }
+
+        unset($_SESSION["forget"]);
+        flash("success", "Sua senha foi atualizar com sucesso");
+        echo $this->ajaxResponse("redirect", [
+            "url"=> $this->router->route("web.login")
+        ]);
+        //echo json_encode($data);
+    }
+
   }
 
 ?>

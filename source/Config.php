@@ -53,7 +53,15 @@ define("SOCIAL",[
  * MAIL CONNECT
  */
 
-define("MAIL", []);
+define("MAIL", [
+    "host"    => "smtp.sendgrid.net",
+    "port"    => "587",
+    "user"    => "apikey",
+    "passwd"  =>"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",
+    "from_name" => "Fedner Dabady",
+    "from_email"  =>"fednerdab@gmail.com"
+
+]);
 
 /**
  * SOCIAL_LOGIN: FACEBOOK
