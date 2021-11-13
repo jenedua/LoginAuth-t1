@@ -3,12 +3,15 @@
 /**
  * SITE CONFIG
  */
+
+use League\OAuth2\Client\Provider\Facebook;
+
 define("SITE", [
     "name" => " Auth em MVV com PHP",
     "desc" => "Apprender a construir uma applicação de autenticação em MVC com php",
     "domain" => "localauth.com",
     "local" => "pt_BR",
-    "root" =>"http://localhost/LoginAuth/t1"
+    "root" =>"https://localhost/LoginAuth/t1"
 ]);
 
 /**
@@ -66,11 +69,22 @@ define("MAIL", [
 /**
  * SOCIAL_LOGIN: FACEBOOK
  */
-define("FACEBOOK_LOGIN", []);
+define("FACEBOOK_LOGIN", [
+    'clientId'          => "453158252883335",
+    'clientSecret'      => "c56cecc676266a92659f98fef8842b17",
+    'redirectUri'       => SITE["root"]."/facebook",
+    'graphApiVersion'   => "v12.0"
+
+]);
 
 /**
  * SOCIAL_LOGIN: GOOGLE
  */
-define("GOOGLE_LOGIN", []);
+define("GOOGLE_LOGIN", [
+    'clientId'          => "456931629429-d90clsfgcdd9p5e7qrqvfbj3psckk1id.apps.googleusercontent.com",
+    'clientSecret'      => "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",
+    'redirectUri'       => SITE["root"]."/google"
+
+]);
 
 ?>
